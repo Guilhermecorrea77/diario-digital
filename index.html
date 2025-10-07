@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Agenda Diária</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <main class="app-container">
+        <section id="monthly-view" class="view active">
+            <header class="calendar-header">
+                <button id="prev-month-btn">&lt;</button>
+                <h2 id="current-month-year">Outubro 2025</h2>
+                <button id="next-month-btn">&gt;</button>
+            </header>
+            <div class="monthly-actions">
+                <button id="show-mood-chart-btn">😊 Gráfico de Humor</button>
+                <button id="show-habit-chart-btn">📊 Gráfico de Hábitos</button>
+            </div>
+            <div class="calendar-grid-header">
+                <div>Dom</div><div>Seg</div><div>Ter</div><div>Qua</div><div>Qui</div><div>Sex</div><div>Sáb</div>
+            </div>
+            <div id="calendar-grid" class="calendar-grid">
+                </div>
+        </section>
+
+        <section id="daily-view" class="view">
+            <header class="daily-header">
+                <button id="back-to-month-btn">&larr; Voltar para o Mês</button>
+                <h3 id="selected-date">Sexta-feira, 25 de Outubro</h3>
+            </header>
+            
+            <form id="daily-form" class="daily-form">
+                <div class="day-segment">
+                    <h4>Meu Humor</h4>
+                    <div class="checkbox-group mood-group">
+                        <label><input type="radio" name="mood" value="happy"> 😊 Feliz</label>
+                        <label><input type="radio" name="mood" value="neutral"> 😐 Normal</label>
+                        <label><input type="radio" name="mood" value="sad"> 😔 Triste</label>
+                    </div>
+                </div>
+
+                <div class="day-segment" id="segment-manha">
+                    <h4>Manhã ☀️</h4>
+                    <div class="form-group">
+                        <label><input type="checkbox" name="aula-manha"> Deu aula?</label>
+                        <textarea name="notes-manha" rows="3" placeholder="Anotações da manhã..."></textarea>
+                    </div>
+                </div>
+                <div class="day-segment" id="segment-tarde">
+                    <h4>Tarde 🌆</h4>
+                    <div class="form-group">
+                        <label><input type="checkbox" name="aula-tarde"> Deu aula?</label>
+                        <textarea name="notes-tarde" rows="3" placeholder="Anotações da tarde..."></textarea>
+                    </div>
+                </div>
+                <div class="day-segment" id="segment-noite">
+                    <h4>Noite 🌙</h4>
+                    <div class="form-group">
+                        <label><input type="checkbox" name="aula-noite"> Deu aula?</label>
+                        <textarea name="notes-noite" rows="3" placeholder="Anotações da noite..."></textarea>
+                    </div>
+                </div>
+
+                <div class="day-segment">
+                    <h4>Hábitos ✅</h4>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="habit" value="water"> Beber Água</label>
+                        <label><input type="checkbox" name="habit" value="exercise"> Fazer Exercício</label>
+                        <label><input type="checkbox" name="habit" value="read"> Ler um Livro</label>
+                        <label><input type="checkbox" name="habit" value="study"> Estudar Algo Novo</label>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="save-btn">Salvar Dia</button>
+                    <button type="button" id="download-btn" class="download-btn">Baixar .txt</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <div id="chart-view" class="modal-overlay">
+        <div class="modal-content">
+            <header class="modal-header">
+                <h3 id="modal-title">Gráfico</h3>
+                <button id="close-chart-btn" class="close-btn">&times;</button>
+            </header>
+            <div class="chart-container">
+                <canvas id="chart-canvas"></canvas>
+            </div>
+            <div class="modal-actions">
+                <button id="download-chart-btn" class="download-btn">Baixar Gráfico</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
